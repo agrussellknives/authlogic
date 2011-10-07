@@ -3,8 +3,8 @@ module Authlogic
   # So if you are using this in a rails app you should have this library.
   module Random
     extend self
-    
-    SecureRandom = (defined?(::SecureRandom) && ::SecureRandom) || (defined?(::ActiveSupport::SecureRandom) && ::ActiveSupport::SecureRandom)
+
+    SecureRandom = ::SecureRandom
     
     if SecureRandom
       def hex_token

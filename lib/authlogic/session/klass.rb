@@ -34,6 +34,12 @@ module Authlogic
             else
               nil
             end
+          unless @klass.respond_to? :session_key
+            @klass.define_singleton_method :session_key do
+              primary_key 
+            end
+          end
+          @klass
         end
         
         # Same as klass, just returns a string instead of the actual constant.

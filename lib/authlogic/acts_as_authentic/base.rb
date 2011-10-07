@@ -54,7 +54,7 @@ module Authlogic
           modules.uniq!
           self.acts_as_authentic_modules = modules
         end
-        
+                
         # This is the same as add_acts_as_authentic_module, except that it removes the module from the list.
         def remove_acts_as_authentic_module(mod)
           modules = acts_as_authentic_modules.clone
@@ -106,4 +106,5 @@ end
 ::ActiveRecord::Base.send :include, Authlogic::ActsAsAuthentic::SessionMaintenance
 ::ActiveRecord::Base.send :include, Authlogic::ActsAsAuthentic::SingleAccessToken
 ::ActiveRecord::Base.send :include, Authlogic::ActsAsAuthentic::ValidationsScope
+::ActiveRecord::Base.send :include, Authlogic::ActsAsAuthentic::SessionKey
 

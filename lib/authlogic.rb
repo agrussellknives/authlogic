@@ -19,6 +19,7 @@ AUTHLOGIC_PATH = File.dirname(__FILE__) + "/authlogic/"
  "authenticates_many/base",
  "authenticates_many/association",
  
+ "acts_as_authentic/session_key",
  "acts_as_authentic/email",
  "acts_as_authentic/logged_in_status",
  "acts_as_authentic/login",

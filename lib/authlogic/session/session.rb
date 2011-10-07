@@ -36,7 +36,7 @@ module Authlogic
               # This is done for performance reasons and to save on queries.
               record = record_id.nil? ?
                 search_for_record("find_by_persistence_token", persistence_token) :
-                search_for_record("find_by_#{klass.primary_key}", record_id)
+                search_for_record("find_by_#{klass.session_key}", record_id)
               self.unauthorized_record = record if record && record.persistence_token == persistence_token
               valid?
             else
@@ -45,7 +45,7 @@ module Authlogic
           end
           
           def session_credentials
-            [controller.session[session_key], controller.session["#{session_key}_#{klass.primary_key}"]].compact
+            [controller.session[session_key], controller.session["#{session_key}_#{klass.session_key}"]].compact
           end
           
           def session_key
@@ -54,7 +54,7 @@ module Authlogic
           
           def update_session
             controller.session[session_key] = record && record.persistence_token
-            controller.session["#{session_key}_#{klass.primary_key}"] = record && record.send(record.class.primary_key)
+            controller.session["#{session_key}_#{klass.session_key}"] = record && record.send(klass.session_key)
           end
       end
     end
