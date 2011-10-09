@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'activerecord', '>= 3.0.7'
+gem 'pry'
 
 group :test do
   gem 'bcrypt-ruby'
